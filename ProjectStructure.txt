@@ -1,0 +1,77 @@
+budget_app/
+│
+├── budget_app/                # Project root directory
+│   ├── __init__.py            # Marks the directory as a Python package
+│   ├── settings.py            # Django project settings
+│   ├── urls.py                # URL declarations for the project
+│   ├── wsgi.py                # WSGI configuration for deployment
+│   ├── asgi.py                # ASGI configuration for asynchronous deployment
+│   └── manage.py              # Django management script
+│
+├── gmail/                     # App for handling Gmail integration and email processing
+│   ├── migrations/            # Database migrations for this app
+│   ├── __init__.py            # Marks the directory as a Python package
+│   ├── admin.py               # Admin interface configuration
+│   ├── apps.py                # App configuration
+│   ├── models.py              # Database models for storing parsed email data
+│   ├── tasks.py               # Asynchronous tasks for fetching and processing emails
+│   ├── utils.py               # Utility functions, e.g., for email parsing and data extraction
+│   ├── views.py               # Views for handling Gmail-related requests
+│   ├── forms.py               # Forms related to Gmail configuration (optional)
+│   ├── urls.py                # URL routes for Gmail-related views
+│   └── services.py            # Service layer for interacting with the Gmail API
+│
+├── transactions/              # App for managing financial transactions and data aggregation
+│   ├── migrations/            # Database migrations for this app
+│   ├── __init__.py            # Marks the directory as a Python package
+│   ├── admin.py               # Admin interface configuration
+│   ├── apps.py                # App configuration
+│   ├── models.py              # Database models for transactions, categories, etc.
+│   ├── views.py               # Views for displaying transaction data and analytics
+│   ├── urls.py                # URL routes for transaction-related views
+│   ├── serializers.py         # Serializers for API endpoints (if building a REST API)
+│   ├── forms.py               # Forms for adding/editing transactions (optional)
+│   ├── templates/             # Templates for rendering transaction-related HTML pages
+│   │   └── transactions/      # Subdirectory for transaction-related templates
+│   ├── static/                # Static files (CSS, JS) specific to this app
+│   │   └── transactions/      # Subdirectory for transaction-related static files
+│   └── services.py            # Service layer for handling transaction-related logic
+│
+├── analytics/                 # App for handling data visualization and reporting
+│   ├── migrations/            # Database migrations for this app
+│   ├── __init__.py            # Marks the directory as a Python package
+│   ├── admin.py               # Admin interface configuration
+│   ├── apps.py                # App configuration
+│   ├── views.py               # Views for rendering graphs and analytics pages
+│   ├── urls.py                # URL routes for analytics-related views
+│   ├── templates/             # Templates for rendering analytics-related HTML pages
+│   │   └── analytics/         # Subdirectory for analytics-related templates
+│   ├── static/                # Static files (CSS, JS) specific to this app
+│   │   └── analytics/         # Subdirectory for analytics-related static files
+│   └── charts.py              # Custom chart logic or integration with third-party libraries (e.g., Chart.js)
+│
+├── users/                     # App for user authentication and management (optional)
+│   ├── migrations/            # Database migrations for this app
+│   ├── __init__.py            # Marks the directory as a Python package
+│   ├── admin.py               # Admin interface configuration
+│   ├── apps.py                # App configuration
+│   ├── models.py              # Custom user models, if any
+│   ├── views.py               # Views for handling user-related actions
+│   ├── urls.py                # URL routes for user-related views
+│   ├── forms.py               # Forms for user login, registration, etc.
+│   ├── templates/             # Templates for rendering user-related HTML pages
+│   │   └── users/             # Subdirectory for user-related templates
+│   ├── static/                # Static files (CSS, JS) specific to this app
+│   │   └── users/             # Subdirectory for user-related static files
+│   └── signals.py             # Signals for user-related events (e.g., post-save actions)
+│
+├── static/                    # Global static files (CSS, JS, images)
+│   └── css/                   # Global stylesheets
+│
+├── templates/                 # Global templates shared across the project
+│   └── base.html              # Base template for the entire project
+│
+├── media/                     # Media files uploaded by users (if needed)
+│
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation

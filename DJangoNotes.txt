@@ -1,3 +1,9 @@
-Change your models (in models.py).
-Run python manage.py makemigrations to create migrations for those changes
-Run python manage.py migrate to apply those changes to the database.
+Add Model
+-Make made in app/models
+-Register in app.admin
+-Ensure it is in installed apps under settings.py
+-python3 manage.py makemigrations app
+-python3 manage.py migrate
+
+Run Server
+python3 manage.py runserver
