@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Budget App</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
 </head>
 <body>
     <h1>Dashboard</h1>
     <p>Welcome to the transaction dashboard!</p>
     
+    <canvas id="spendingChart" width="400" height="200"></canvas>  <!-- Canvas for the chart -->
+
     <table>
         <thead>
             <tr>
@@ -35,5 +40,63 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        var chartData = JSON.parse('{{ chart_data|escapejs }}');
+        console.log(chartData);
+        var datasets = [];
+
+        for (var vendor in chartData) {
+            datasets.push({
+                label: vendor,
+                data: chartData[vendor].amounts,
+                borderColor: getRandomColor(),
+                fill: false,
+                tension: 0.1
+            });
+        }
+
+        var ctx = document.getElementById('spendingChart').getContext('2d');
+        var spendingChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData[Object.keys(chartData)[0]].dates,  // Use the dates from the first vendor as x-axis labels
+                datasets: datasets
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Amount ($)'
+                        }
+                    }
+                }
+            }
+        });
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+    <a href="{% url 'index' %}">Go back to Home</a>  <!-- Link to the dashboard -->
+
 </body>
 </html>
+
+
