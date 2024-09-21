@@ -21,6 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),  # This will make the app start at index
-    path('transactions/', include('transactions.urls')),  # Include transactions app URLs
+    path('', include('core.urls')),  # Include core URLs
+    path('transactions/', include(('transactions.urls', 'transactions'), namespace='transactions')),  # Add the namespace here
+
 ]

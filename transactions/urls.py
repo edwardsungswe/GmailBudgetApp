@@ -4,5 +4,9 @@ from . import views
 
 urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),  # URL for the dashboard
-    # Other URLs...
+    path('editEmailFilter/', views.EditEmailFiltersView.as_view(), name='edit_emails'),
+    path('syncEmails/', views.SyncEmailsView.as_view(), name='sync_emails'),
+
 ]
+
+

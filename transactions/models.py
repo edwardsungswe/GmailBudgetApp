@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User  # Import the User model
 # Create your models here.
 
 class Transaction(models.Model):
@@ -19,3 +19,15 @@ class Transaction(models.Model):
     
     def __str__(self):
         return f"{self.description} - {self.amount} on {self.date}"
+    
+class EmailFilter(models.Model):
+    vendor = models.CharField(max_length=100)
+    email_domain = models.CharField(max_length=100)
+    bill_identifier = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
+
+    def __str__(self):
+        return (f"Vendor: {self.vendor}, "
+                f"Domain: {self.email_domain}, "
+                f"Bill Identifier: {self.bill_identifier}, "
+                f"Category: {self.category}")

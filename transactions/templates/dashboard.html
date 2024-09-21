@@ -11,6 +11,17 @@
 <body>
     <h1>Dashboard</h1>
     <p>Welcome to the transaction dashboard!</p>
+    <form method="POST" action="{% url 'transactions:sync_emails' %}">
+        {% csrf_token %}
+        <label for="date_range">Select date range:</label>
+        <select name="date_range" id="date_range">
+            <option value="7">Last 7 days</option>
+            <option value="30">Last 30 days</option>
+            <option value="90">Last 90 days</option>
+            <option value="all">All time</option>
+        </select>
+        <button type="submit">Sync Emails</button>
+    </form>
     
     <canvas id="spendingChart" width="400" height="200"></canvas>  <!-- Canvas for the chart -->
 
@@ -94,7 +105,8 @@
             return color;
         }
     </script>
-    <a href="{% url 'index' %}">Go back to Home</a>  <!-- Link to the dashboard -->
+    <a href="{% url 'core:index' %}" class="btn">Go to Dashboard</a>
+
 
 </body>
 </html>
